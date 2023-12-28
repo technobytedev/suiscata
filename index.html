@@ -6,21 +6,19 @@
     <title>SUISCATA RANDOM QUOTES</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rubik+Doodle+Shadow&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Doodle+Shadow&display=swap" rel="stylesheet">
 
     <style>
         body {
-            font-family: Rubik Doodle Shadow;
+            font-family: 'Rubik Doodle Shadow', sans-serif;
         }
         #wrapper {
             height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-image: linear-gradient(to right top, #5A6469, #566573, #5A6469, #5A6469, #566573);
-    
-
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: linear-gradient(to right top, #5A6469, #566573, #5A6469, #5A6469, #566573);
         }
 
         .card {
@@ -29,7 +27,7 @@
         }
 
         .subtitle {
-        text-align: right;
+            text-align: right;
         }
 
         img {
@@ -37,46 +35,38 @@
             margin: auto;
         }
     </style>
-
 </head>
 <body>
 
-<div id="wrapper" class="p-5 ">
-
-<div class="card " style="background-color: black;">
-  <div class="card-content">
-    <center><img src="suis.jpg" alt="" class="mt-2">
-    <p class="title has-text-white mt-5">
-      “<?= $quote ?>”
-    </p>
-    </center>
-    <p class="subtitle has-text-white mb-2">
-    - <?= $author ?>
-    </p>
-  </div>
-  <footer class="card-footer">
-    <p class="card-footer-item">
-      <span class="">
-        <a class="has-text-white" href="fb://page/100582242960046"><img src="fb.png" alt=""  style="max-width: 20px;margin-bottom:-4px!important"> Follow Suiscata </a>
-      </span>
-    </p>
-  </footer>
-</div>
+<div id="wrapper" class="p-5">
+    <div class="card" style="background-color: black;">
+        <div class="card-content">
+            <center><img src="suis.jpg" alt="" class="mt-2">
+            <p id="quote" class="title has-text-white mt-5"></p>
+            </center>
+            <p id="author" class="subtitle has-text-white mb-2"></p>
+        </div>
+        <footer class="card-footer">
+            <p class="card-footer-item">
+                <span class="">
+                    <a class="has-text-white" href="fb://page/100582242960046"><img src="fb.png" alt="" style="max-width: 20px;margin-bottom:-4px!important"> Follow Suiscata </a>
+                </span>
+            </p>
+        </footer>
+    </div>
 </div>
 
-    <script type="text/javascript">
-    // API endpoint
+<script>
+    // API endpoint using CORS Anywhere as a proxy
     const apiEndpoint = 'https://cors-anywhere.herokuapp.com/https://api.quotable.io/random';
 
     // Fetch data from the API
     fetch(apiEndpoint)
         .then(response => response.json())
         .then(data => {
-            // Extract values from the data
             const quote = data.content;
             const author = data.author;
 
-            // Update the HTML content with the fetched data
             document.getElementById('quote').textContent = `“${quote}”`;
             document.getElementById('author').textContent = `- ${author}`;
         })
@@ -85,7 +75,5 @@
         });
 </script>
 
-
-    
 </body>
 </html>
