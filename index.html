@@ -13,14 +13,13 @@
         body {
             font-family: 'Rubik Doodle Shadow', sans-serif;
             background-image: linear-gradient(to right top, #5A6469, #566573, #5A6469, #5A6469, #566573);
-            height: 120vh;
+            height: auto;
         }
         #wrapper {
             height: auto;
             display: flex;
             justify-content: center;
-            align-items: start;
-           
+            align-items: center;
         }
 
         .card {
@@ -60,21 +59,21 @@
 </div>
 
 <script>
-    // API endpoint using CORS Anywhere as a proxy
-    const apiEndpoint = 'https://cors-anywhere.herokuapp.com/https://api.quotable.io/random';
-
-    // Fetch data from the API
-    fetch(apiEndpoint)
+    // Load quotes from local JSON file
+    fetch('inspirational_quotes.json')
         .then(response => response.json())
         .then(data => {
-            const quote = data.content;
-            const author = data.author;
+            // Randomly select a quote
+            const randomIndex = Math.floor(Math.random() * data.length);
+            const quote = data[randomIndex].quote;
+            const author = data[randomIndex].author;
 
+            // Display the selected quote
             document.getElementById('quote').textContent = `“${quote}”`;
             document.getElementById('author').textContent = `- ${author}`;
         })
         .catch(error => {
-            console.error('Failed to fetch data from the API', error);
+            console.error('Failed to load quotes from the JSON file', error);
         });
 </script>
 
