@@ -94,6 +94,27 @@ $author = $data['author'];
 </div>
 </div>
 
+    <script>
+    // API endpoint
+    const apiEndpoint = 'https://api.quotable.io/random';
+
+    // Fetch data from the API
+    fetch(apiEndpoint)
+        .then(response => response.json())
+        .then(data => {
+            // Extract values from the data
+            const quote = data.content;
+            const author = data.author;
+
+            // Update the HTML content with the fetched data
+            document.getElementById('quote').textContent = `“${quote}”`;
+            document.getElementById('author').textContent = `- ${author}`;
+        })
+        .catch(error => {
+            console.error('Failed to fetch data from the API', error);
+        });
+</script>
+
 
     
 </body>
