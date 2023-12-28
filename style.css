@@ -1,0 +1,5 @@
+height: 100vh;
+display: flex;
+justify-content: center;
+align-items: center;
+background-image: linear-gradient(to right top, #3ea2e1, #609ff7, #9497ff, #cb89ff, #ff74ed);
