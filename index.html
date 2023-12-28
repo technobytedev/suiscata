@@ -41,36 +41,6 @@
 </head>
 <body>
 
-
-<?php
-
-// API endpoint
-$apiEndpoint = 'https://api.quotable.io/random';
-
-// Fetch data from the API
-$response = file_get_contents($apiEndpoint);
-
-// Check if the request was successful
-if ($response === false) {
-    die('Failed to fetch data from the API');
-}
-
-// Decode JSON response
-$data = json_decode($response, true);
-
-// Check if JSON decoding was successful
-if ($data === null) {
-    die('Failed to decode JSON');
-}
-
-// Extract values from the data
-$quote = $data['content'];
-$author = $data['author'];
-
-
-
-?>
-
 <div id="wrapper" class="p-5 ">
 
 <div class="card " style="background-color: black;">
@@ -94,7 +64,7 @@ $author = $data['author'];
 </div>
 </div>
 
-    <script>
+    <script type="text/javascript">
     // API endpoint
     const apiEndpoint = 'https://api.quotable.io/random';
 
