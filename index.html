@@ -57,10 +57,16 @@
             <p id="author" class="subtitle has-text-white mb-2"></p>
 
             <button class="button is-info" style="margin: auto;" id="myBtn">Generate Quotes</button>
+          
             </center>
         </div>
 
         <footer class="card-footer">
+            <p class="card-footer-item">
+                <span class="">
+                <a class="has-text-white"onclick="shareOnFacebook()"><img src="fb.png" alt="" style="max-width: 20px;margin-bottom:-4px!important"> Share on Facebook </a>
+                </span>
+            </p>
             <p class="card-footer-item">
                 <span class="">
                     <a class="has-text-white" href="fb://page/100582242960046"><img src="fb.png" alt="" style="max-width: 20px;margin-bottom:-4px!important"> Follow Suiscata </a>
@@ -104,6 +110,13 @@ function updateOpenGraphMetaTags(quote, author) {
     document.querySelector('meta[property="og:title"]').setAttribute("content", `${quote} - ${author}`);
     document.querySelector('meta[property="og:description"]').setAttribute("content", `Get inspired by this quote from Suiscata: ${quote}`);
     // Add other meta tags as needed
+}
+
+// Function to share on Facebook
+function shareOnFacebook() {
+    const shareUrl = window.location.href;
+    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
+    window.open(facebookUrl, '_blank');
 }
     
     // Load quotes from local JSON file
