@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SUISCATA RANDOM QUOTES</title>
+    <meta property="og:title" content="Suiscata Random Quotes">
+    <meta property="og:description" content="Get inspired by random quotes from Suiscata">
+    <meta property="og:image" content="suis.jpg">
+    <meta property="og:url" content="https://yourwebsite.com">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#5A6469">
+    <!-- Add other necessary meta tags -->
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,9 +53,13 @@
         <div class="card-content">
             <center><img src="suis.jpg" alt="" class="mt-2">
             <p id="quote" class="title has-text-white mt-5"></p>
-            </center>
+           
             <p id="author" class="subtitle has-text-white mb-2"></p>
+
+            <button class="button is-info" style="margin: auto;" id="myBtn">Generate Quotes</button>
+            </center>
         </div>
+
         <footer class="card-footer">
             <p class="card-footer-item">
                 <span class="">
@@ -59,6 +71,39 @@
 </div>
 
 <script>
+
+const element = document.getElementById("myBtn");
+element.addEventListener("click", myFunction);
+
+function myFunction() {
+ // Load quotes from local JSON file
+ fetch('inspirational_quotes.json')
+        .then(response => response.json())
+        .then(data => {
+            // Randomly select a quote
+            const randomIndex = Math.floor(Math.random() * data.length);
+            const quote = data[randomIndex].quote;
+            const author = data[randomIndex].author;
+
+            // Display the selected quote
+            document.getElementById('quote').textContent = `“${quote}”`;
+            document.getElementById('author').textContent = `- ${author}`;
+            
+            // Update Open Graph meta tags for sharing
+            updateOpenGraphMetaTags(quote, author);
+        })
+        .catch(error => {
+            console.error('Failed to load quotes from the JSON file', error);
+        });
+}
+
+// Function to update Open Graph meta tags
+function updateOpenGraphMetaTags(quote, author) {
+    document.querySelector('meta[property="og:title"]').setAttribute("content", `${quote} - ${author}`);
+    document.querySelector('meta[property="og:description"]').setAttribute("content", `Get inspired by this quote from Suiscata: ${quote}`);
+    // Add other meta tags as needed
+}
+    
     // Load quotes from local JSON file
     fetch('inspirational_quotes.json')
         .then(response => response.json())
@@ -71,6 +116,9 @@
             // Display the selected quote
             document.getElementById('quote').textContent = `“${quote}”`;
             document.getElementById('author').textContent = `- ${author}`;
+            
+            // Update Open Graph meta tags for sharing
+            updateOpenGraphMetaTags(quote, author);
         })
         .catch(error => {
             console.error('Failed to load quotes from the JSON file', error);
