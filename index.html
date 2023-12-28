@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SUISCATA RANDOM QUOTES</title>
+    <title id="title">SUISCATA RANDOM QUOTES</title>
     <meta property="og:title" content="Suiscata Random Quotes">
     <meta property="og:description" content="Get inspired by random quotes from Suiscata">
     <meta property="og:image" content="suis.jpg">
@@ -88,6 +88,8 @@ function myFunction() {
             // Display the selected quote
             document.getElementById('quote').textContent = `“${quote}”`;
             document.getElementById('author').textContent = `- ${author}`;
+            document.getElementById('title').textContent = `“${quote}”`;
+
             
             // Update Open Graph meta tags for sharing
             updateOpenGraphMetaTags(quote, author);
@@ -116,6 +118,8 @@ function updateOpenGraphMetaTags(quote, author) {
             // Display the selected quote
             document.getElementById('quote').textContent = `“${quote}”`;
             document.getElementById('author').textContent = `- ${author}`;
+            document.getElementById('title').textContent = `“${quote}”`;
+
             
             // Update Open Graph meta tags for sharing
             updateOpenGraphMetaTags(quote, author);
