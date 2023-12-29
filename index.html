@@ -108,7 +108,7 @@ function myFunction() {
 // Function to update Open Graph meta tags
 function updateOpenGraphMetaTags(quote, author) {
     document.querySelector('meta[property="og:title"]').setAttribute("content", `${quote} - ${author}`);
-    document.querySelector('meta[property="og:description"]').setAttribute("content", `Get inspired by this quote from Suiscata: ${quote}`);
+    document.querySelector('meta[property="og:description"]').setAttribute("content", `${quote}`);
     // Add other meta tags as needed
 }
 
